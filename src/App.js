@@ -1,8 +1,10 @@
+import { BrowserRouter, Routes } from "react-router-dom"
+
 function App() {
   return (
-    <div>
-      <h2>Goal management</h2>
-    </div>
+    <BrowserRouter>
+      <Routes></Routes>
+    </BrowserRouter>
   )
 }
 
