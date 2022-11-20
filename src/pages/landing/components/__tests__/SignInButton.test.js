@@ -1,6 +1,6 @@
 import SignInButton from "../SignInButton"
 import TestsWrapper from "../../../../helpers/TestsWrapper"
-import { fireEvent, render, screen } from "@testing-library/react"
+import { fireEvent, render } from "@testing-library/react"
 
 describe("SignInButton component", () => {
   test("renders login button when user is logged out", () => {
