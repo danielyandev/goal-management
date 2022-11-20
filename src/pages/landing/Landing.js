@@ -4,7 +4,7 @@ import "./Landing.css"
 
 function Landing() {
   return (
-    <div className="d-flex flex-column">
+    <div className="d-flex flex-column" data-testid="landing-page">
       <BannerSection />
       <HowItWorksSection />
     </div>
