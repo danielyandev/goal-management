@@ -3,6 +3,7 @@ import Landing from "./pages/landing/Landing"
 import PrivateRoute from "./helpers/PrivateRoute"
 import { useKeycloak } from "@react-keycloak/web"
 import Dashboard from "./pages/dashboard/Dashboard"
+import { Navigate } from "react-router"
 
 function App() {
   const { initialized } = useKeycloak()
@@ -21,6 +22,8 @@ function App() {
               </PrivateRoute>
             }
           />
+
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
     )
