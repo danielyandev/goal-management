@@ -10,8 +10,8 @@ on:
 
 jobs:
   build:
-
     runs-on: self-hosted
+    environment: prod
 
     strategy:
       matrix:
@@ -25,8 +25,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
 
-    - name: Install npm dependencies
-      run: npm i
+    - name: Run CI
+      run: npm ci
 
     - name: Build app
       run: npm run build
