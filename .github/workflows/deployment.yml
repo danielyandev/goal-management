@@ -3,17 +3,15 @@
 
 name: Goal Management CD
 
-environment: prod
-
 on:
   push:
     branches:
       - GM-8-Deploy_front_end_application
 
 jobs:
-  build:
-
+  deployment:
     runs-on: self-hosted
+    environment: prod
 
     strategy:
       matrix:
