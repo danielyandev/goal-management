@@ -11,6 +11,7 @@ on:
 jobs:
   deployment:
     runs-on: ubuntu-latest
+    environment: prod
 
     strategy:
       matrix:
@@ -28,8 +29,8 @@ jobs:
 #      run: npm i
 #
     - name: Build app
-      env:
-        TEST_SECRET: ${{ secrets.TEST_SECRET }}
       run: |
-        echo URL: "$TEST_SECRET"
+        echo REACT_APP_KEYCLOAK_URL: "$REACT_APP_KEYCLOAK_URL"
+        echo REACT_APP_KEYCLOAK_REALM: "$REACT_APP_KEYCLOAK_REALM"
+        echo REACT_APP_KEYCLOAK_CLIENT_ID: "$REACT_APP_KEYCLOAK_CLIENT_ID"
 #        npm run build
