@@ -11,7 +11,7 @@ env:
 on:
   push:
     branches:
-      - GM-8-Deploy_front_end_application
+      - main
 
 jobs:
   deployment:
