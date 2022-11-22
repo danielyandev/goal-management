@@ -28,6 +28,8 @@ jobs:
 #      run: npm i
 #
     - name: Build app
+      env:
+        TEST_SECRET: ${{ secrets.TEST_SECRET }}
       run: |
-        echo URL: ${{ secrets.TEST_SECRET }}
+        echo URL: "$TEST_SECRET"
 #        npm run build
