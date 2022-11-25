@@ -1,6 +1,6 @@
 .landing-bg {
     background-color: #13263c;
-    background-image: url(../../public/assets/images/svg/landing.svg)
+    background-image: url("/public/assets/images/svg/landing.svg")
 }
 
 .landing-title-gradient {
