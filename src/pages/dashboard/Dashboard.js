@@ -1,5 +1,7 @@
+import Layout from "../../layouts/main/Layout"
+
 function Dashboard() {
-  return <div>Dashboard</div>
+  return <Layout>My goals</Layout>
 }
 
 export default Dashboard

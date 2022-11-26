@@ -1,5 +1,4 @@
 import { useKeycloak } from "@react-keycloak/web"
-import PropTypes from "prop-types"
 import Button from "../../../components/Button"
 import { Link } from "react-router-dom"
 
@@ -23,8 +22,7 @@ function SignInButton({ children, ...rest }) {
 }
 
 SignInButton.propTypes = {
-  variant: PropTypes.oneOf(["primary", "success", "info", "warning", "danger"]),
-  children: PropTypes.any
+  ...Button.propTypes
 }
 
 export default SignInButton

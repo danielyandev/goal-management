@@ -23,6 +23,16 @@ function App() {
             }
           />
 
+          <Route
+            exact
+            path="/requests"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>

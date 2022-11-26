@@ -9,7 +9,18 @@ function Button({ variant, children, ...rest }) {
 }
 
 Button.propTypes = {
-  variant: PropTypes.oneOf(["primary", "success", "info", "warning", "danger"]),
+  variant: PropTypes.oneOf([
+    "outline-primary",
+    "outline-success",
+    "outline-info",
+    "outline-warning",
+    "outline-danger",
+    "primary",
+    "success",
+    "info",
+    "warning",
+    "danger"
+  ]),
   children: PropTypes.any
 }
 

@@ -1,7 +1,7 @@
 import { useKeycloak } from "@react-keycloak/web"
 import { Navigate } from "react-router"
+import PropTypes from "prop-types"
 
-// eslint-disable-next-line react/prop-types
 const PrivateRoute = ({ children }) => {
   const { keycloak } = useKeycloak()
 
@@ -10,6 +10,10 @@ const PrivateRoute = ({ children }) => {
   }
 
   return children
+}
+
+PrivateRoute.propTypes = {
+  children: PropTypes.any
 }
 
 export default PrivateRoute
