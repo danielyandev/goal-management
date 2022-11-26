@@ -2,6 +2,20 @@ body {
 	font-family: "Poppins", sans-serif;
 }
 
+header {
+	height: 76px;
+	padding-right: 15px;
+}
+
+table {
+	font-size: 14px;
+}
+
+.sidebar {
+	width: 280px;
+	min-height: 100vh;
+}
+
 .btn {
 	border-radius: 0;
 }
@@ -34,4 +48,22 @@ body {
 .badge-light-success {
 	color: #50cd89;
 	background-color: #e8fff3;
+}
+
+.badge-light-danger {
+	color: #f1416c;
+	background-color: #fff5f8;
+}
+
+.badge-light-info {
+	color: #009ef7;
+	background-color: #ecf8ff;
+}
+
+.pagination a {
+	border-radius: 0 !important;
+}
+
+.text-bg-dark {
+	background: #13263c !important;
 }
