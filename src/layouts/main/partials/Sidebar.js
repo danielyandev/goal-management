@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom"
 import SidebarListItem from "../components/SidebarListItem"
+import PropTypes from "prop-types"
 
-function Sidebar() {
+function Sidebar({ visible = false }) {
   return (
-    <div className="sidebar d-flex flex-column flex-shrink-0 p-3 text-bg-dark">
+    <div
+      className={`sidebar ${
+        !visible && "d-none"
+      } d-lg-flex flex-column position-sticky flex-shrink-0 p-3 text-bg-dark`}
+    >
       <Link
         to="/dashboard"
         className="d-flex justify-content-center mb-3 mb-md-0 me-md-auto text-secondary text-decoration-none"
@@ -17,6 +22,10 @@ function Sidebar() {
       </ul>
     </div>
   )
+}
+
+Sidebar.propTypes = {
+  visible: PropTypes.bool
 }
 
 export default Sidebar
