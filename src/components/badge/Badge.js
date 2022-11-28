@@ -1,7 +1,11 @@
 import PropTypes from "prop-types"
 
 function Badge({ variant, text }) {
-  return <span className={`badge badge-light-${variant} m-1`}>{text}</span>
+  return (
+    <span className={`badge badge-light-${variant} m-1`} data-testid="badge">
+      {text}
+    </span>
+  )
 }
 
 Badge.propTypes = {
