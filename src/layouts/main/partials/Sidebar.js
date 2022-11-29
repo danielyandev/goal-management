@@ -5,11 +5,13 @@ import PropTypes from "prop-types"
 function Sidebar({ visible = false }) {
   return (
     <div
+      data-testid="sidebar"
       className={`sidebar ${
         !visible && "d-none"
       } d-lg-flex flex-column position-sticky flex-shrink-0 p-3 text-bg-dark`}
     >
       <Link
+        data-testid="dashboard-link"
         to="/dashboard"
         className="d-flex justify-content-center mb-3 mb-md-0 me-md-auto text-secondary text-decoration-none"
       >
