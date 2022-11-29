@@ -18,14 +18,18 @@ function TableRow({ goal }) {
 
   return (
     <tr>
-      <td>{goal.title}</td>
-      <td className="text-truncate" style={{ maxWidth: "250px" }}>
+      <td data-testid="td-title">{goal.title}</td>
+      <td
+        data-testid="td-description"
+        className="text-truncate"
+        style={{ maxWidth: "250px" }}
+      >
         {goal.description}
       </td>
-      <td>{goal.assignee}</td>
-      <td>{getGoalBadge(goal.status)}</td>
-      <td>{goal.createdAt}</td>
-      <td className="text-end">
+      <td data-testid="td-assignee">{goal.assignee}</td>
+      <td data-testid="td-status">{getGoalBadge(goal.status)}</td>
+      <td data-testid="td-date">{goal.createdAt}</td>
+      <td data-testid="td-actions" className="text-end">
         <Button variant="outline-info">View</Button>
       </td>
     </tr>
