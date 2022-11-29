@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react"
 import PendingBadge from "../PendingBadge"
 
-describe("ApprovedBadge component", () => {
+describe("PendingBadge component", () => {
   test("renders with correct variant and text", () => {
     const { getByTestId } = render(<PendingBadge text="test pending badge" />)
     const badge = getByTestId("badge")
