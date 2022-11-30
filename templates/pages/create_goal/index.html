@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"/>
+    <link rel="stylesheet" type="text/css" href="../../public/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../public/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="dashboard.css">
+    <title>GM Tool | Goal Management System</title>
+</head>
+<body>
+
+<div class="d-flex">
+    <div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-bg-dark">
+        <a href="#" class="d-flex justify-content-center mb-3 mb-md-0 me-md-auto text-secondary text-decoration-none">
+            <span class="fs-4">GM Tool</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link active">
+                    My goals
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                    Review requests
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="d-flex flex-column w-100">
+        <header class="d-flex text-bg-dark align-items-center justify-content-end">
+            <button class="btn btn-outline-danger">Sign Out</button>
+        </header>
+
+        <main class="h-100 bg-light px-4 pt-4">
+            <div class="container bg-white p-4">
+                <h2>Create new goal</h2>
+                <form class="col-lg-6">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" rows="5" id="description"></textarea>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="approver">Approver</label>
+                        <select class="form-control" id="approver">
+                            <option value=""></option>
+                            <option value="">user1</option>
+                            <option value="">user2</option>
+                            <option value="">user3</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary mt-3">Create</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+</div>
+
+</body>
+</html>
