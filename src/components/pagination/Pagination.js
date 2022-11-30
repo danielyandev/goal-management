@@ -46,7 +46,7 @@ function Pagination({ items, onPageChange, onPageSizeChange, pageSize }) {
 Pagination.propTypes = {
   onPageChange: PropTypes.func,
   onPageSizeChange: PropTypes.func,
-  pageSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  pageSize: PerPage.propTypes.size,
   items: PropTypes.array
 }
 
