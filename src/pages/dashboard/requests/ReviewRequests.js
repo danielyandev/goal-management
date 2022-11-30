@@ -6,10 +6,14 @@ import Pagination from "../../../components/pagination/Pagination"
 
 function ReviewRequests() {
   const [goals, setGoals] = useState([])
+  const [pagination, setPagination] = useState({
+    page: 0,
+    size: 10
+  })
 
   useEffect(() => {
     fetchGoals()
-  }, [])
+  }, [pagination])
 
   // todo fetch
   const fetchGoals = () => {
@@ -24,6 +28,21 @@ function ReviewRequests() {
       <TableRow goal={goal} key={"review-goal-" + goal.id} />
     ))
   }
+
+  const handlePageChange = ({ selected }) => {
+    setPagination({
+      ...pagination,
+      page: selected
+    })
+  }
+
+  const handlePageSizeChange = (size) => {
+    setPagination({
+      page: 0,
+      size
+    })
+  }
+
   return (
     <Layout>
       <h2>Review Requests</h2>
@@ -44,7 +63,12 @@ function ReviewRequests() {
         </table>
       </div>
 
-      {goals.length > 0 && <Pagination />}
+      <Pagination
+        items={goals}
+        onPageChange={handlePageChange}
+        pageSize={pagination.size}
+        onPageSizeChange={handlePageSizeChange}
+      />
     </Layout>
   )
 }

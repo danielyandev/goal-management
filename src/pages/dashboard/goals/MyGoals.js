@@ -6,10 +6,14 @@ import Pagination from "../../../components/pagination/Pagination"
 
 function MyGoals() {
   const [goals, setGoals] = useState([])
+  const [pagination, setPagination] = useState({
+    page: 0,
+    size: 10
+  })
 
   useEffect(() => {
     fetchGoals()
-  }, [])
+  }, [pagination])
 
   // todo fetch
   const fetchGoals = () => {
@@ -22,6 +26,21 @@ function MyGoals() {
     }
     return goals.map((goal) => <TableRow goal={goal} key={"goal-" + goal.id} />)
   }
+
+  const handlePageChange = ({ selected }) => {
+    setPagination({
+      ...pagination,
+      page: selected
+    })
+  }
+
+  const handlePageSizeChange = (size) => {
+    setPagination({
+      page: 0,
+      size
+    })
+  }
+
   return (
     <Layout>
       <h2>My Goals</h2>
@@ -44,7 +63,12 @@ function MyGoals() {
         </table>
       </div>
 
-      {goals.length > 0 && <Pagination />}
+      <Pagination
+        items={goals}
+        onPageChange={handlePageChange}
+        pageSize={pagination.size}
+        onPageSizeChange={handlePageSizeChange}
+      />
     </Layout>
   )
 }
