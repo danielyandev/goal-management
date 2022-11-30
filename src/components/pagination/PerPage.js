@@ -1,8 +1,8 @@
 import PropTypes from "prop-types"
 
-function PerPage({ size, onSizeChange }) {
-  const sizes = [10, 25, 50]
+const sizes = [10, 25, 50]
 
+function PerPage({ size = 10, onSizeChange }) {
   const renderOptions = () => {
     return sizes.map((s) => {
       return (
@@ -15,6 +15,7 @@ function PerPage({ size, onSizeChange }) {
 
   return (
     <select
+      data-testid="perpage-select"
       className="form-select form-select-sm"
       onChange={(e) => onSizeChange(e.target.value)}
       defaultValue={size}
@@ -25,7 +26,7 @@ function PerPage({ size, onSizeChange }) {
 }
 
 PerPage.propTypes = {
-  size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  size: PropTypes.oneOf(sizes),
   onSizeChange: PropTypes.func
 }
 
