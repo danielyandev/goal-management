@@ -1,8 +1,9 @@
 import PropTypes from "prop-types"
-import Button from "../../../components/Button"
-import ApprovedBadge from "../../../components/badge/ApprovedBadge"
-import RejectedBadge from "../../../components/badge/RejectedBadge"
-import PendingBadge from "../../../components/badge/PendingBadge"
+import Button from "../../../../components/Button"
+import ApprovedBadge from "../../../../components/badge/ApprovedBadge"
+import RejectedBadge from "../../../../components/badge/RejectedBadge"
+import PendingBadge from "../../../../components/badge/PendingBadge"
+import { formatDate } from "../../../../utils/Date"
 
 function TableRow({ goal }) {
   const getGoalBadge = (status) => {
@@ -26,9 +27,9 @@ function TableRow({ goal }) {
       >
         {goal.description}
       </td>
-      <td data-testid="td-assignee">{goal.assignee}</td>
+      <td data-testid="td-reviewer">{goal.reviewer.fullName}</td>
       <td data-testid="td-status">{getGoalBadge(goal.status)}</td>
-      <td data-testid="td-date">{goal.createdAt}</td>
+      <td data-testid="td-date">{formatDate(goal.createdDate)}</td>
       <td data-testid="td-actions" className="text-end">
         <Button variant="outline-info">View</Button>
       </td>

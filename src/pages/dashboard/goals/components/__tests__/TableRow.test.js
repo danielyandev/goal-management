@@ -1,18 +1,27 @@
 import TableRow from "../TableRow"
-import TestsWrapper from "../../../../helpers/TestsWrapper"
+import TestsWrapper from "../../../../../helpers/TestsWrapper"
 import { render } from "@testing-library/react"
+import { formatDate } from "../../../../../utils/Date"
 
 const goal = {
-  title: "test goal title",
-  description: "test goal description",
-  status: "pending",
-  assignee: "test user",
-  createdAt: "some date"
+  id: 1,
+  title: "Test title",
+  description: "Test description",
+  owner: {
+    username: "owner1",
+    fullName: "Owner Name"
+  },
+  reviewer: {
+    username: "reviewer1",
+    fullName: "Reviewer Name"
+  },
+  status: "PENDING",
+  createdDate: "2022-11-29T23:12:08.988466959"
 }
 
 describe("TableRow component", () => {
   test("renders table row with status Pending", () => {
-    const { getByTestId } = render(
+    const { getByTestId, queryByText } = render(
       <table>
         <tbody>
           <TableRow goal={goal} />
@@ -24,16 +33,18 @@ describe("TableRow component", () => {
     )
     expect(getByTestId("td-title")).toHaveTextContent(goal.title)
     expect(getByTestId("td-description")).toHaveTextContent(goal.description)
-    expect(getByTestId("td-assignee")).toHaveTextContent(goal.assignee)
-    expect(getByTestId("td-date")).toHaveTextContent(goal.createdAt)
+    expect(getByTestId("td-reviewer")).toHaveTextContent(goal.reviewer.fullName)
+    expect(getByTestId("td-date")).toHaveTextContent(
+      formatDate(goal.createdDate)
+    )
 
-    const badge = getByTestId("td-status")
-    expect(badge).toHaveTextContent("Pending")
+    expect(getByTestId("td-status")).toHaveTextContent("Pending")
+    expect(queryByText("View")).toBeInTheDocument()
   })
 
   test("renders table row with status Approved", () => {
     goal.status = "approved"
-    const { getByTestId } = render(
+    const { getByTestId, queryByText } = render(
       <table>
         <tbody>
           <TableRow goal={goal} />
@@ -45,14 +56,15 @@ describe("TableRow component", () => {
     )
 
     expect(getByTestId("td-status")).toHaveTextContent("Approved")
+    expect(queryByText("View")).toBeInTheDocument()
   })
 
   test("renders table row with status Rejected", () => {
     goal.status = "rejected"
-    const { getByTestId } = render(
+    const { getByTestId, queryByText } = render(
       <table>
         <tbody>
-        <TableRow goal={goal} />
+          <TableRow goal={goal} />
         </tbody>
       </table>,
       {
@@ -61,5 +73,6 @@ describe("TableRow component", () => {
     )
 
     expect(getByTestId("td-status")).toHaveTextContent("Rejected")
+    expect(queryByText("View")).toBeInTheDocument()
   })
 })
