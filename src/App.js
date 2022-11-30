@@ -2,8 +2,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Landing from "./pages/landing/Landing"
 import PrivateRoute from "./helpers/PrivateRoute"
 import { useKeycloak } from "@react-keycloak/web"
-import Dashboard from "./pages/dashboard/Dashboard"
+import MyGoals from "./pages/dashboard/goals/MyGoals"
 import { Navigate } from "react-router"
+import ReviewRequests from "./pages/dashboard/requests/ReviewRequests"
 
 function App() {
   const { initialized } = useKeycloak()
@@ -18,7 +19,7 @@ function App() {
             path="/dashboard"
             element={
               <PrivateRoute>
-                <Dashboard />
+                <MyGoals />
               </PrivateRoute>
             }
           />
@@ -28,7 +29,7 @@ function App() {
             path="/requests"
             element={
               <PrivateRoute>
-                <Dashboard />
+                <ReviewRequests />
               </PrivateRoute>
             }
           />

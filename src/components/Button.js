@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 
 function Button({ variant, children, ...rest }) {
   return (
-    <button {...rest} className={`btn btn-${variant}`}>
+    <button {...rest} className={`m-1 btn btn-${variant}`}>
       {children}
     </button>
   )

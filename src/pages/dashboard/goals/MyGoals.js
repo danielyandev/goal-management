@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
-import Layout from "../../layouts/main/Layout"
+import Layout from "../../../layouts/main/Layout"
 import TableRow from "./components/TableRow"
-import EmptyRow from "../../components/table/EmptyRow"
-import Pagination from "../../components/pagination/Pagination"
+import EmptyRow from "../../../components/table/EmptyRow"
+import Pagination from "../../../components/pagination/Pagination"
 
-function Dashboard() {
+function MyGoals() {
   const [goals, setGoals] = useState([])
 
   useEffect(() => {
@@ -24,6 +24,7 @@ function Dashboard() {
   }
   return (
     <Layout>
+      <h2>My Goals</h2>
       <button className="btn btn-outline-primary">Create new goal</button>
 
       <div className="table-responsive">
@@ -32,7 +33,7 @@ function Dashboard() {
             <tr className="text-start text-uppercase text-secondary">
               <th>Title</th>
               <th>Description</th>
-              <th>Assignee</th>
+              <th>Reviewer</th>
               <th>Status</th>
               <th>Created Date</th>
               <th className="text-end">Actions</th>
@@ -48,4 +49,4 @@ function Dashboard() {
   )
 }
 
-export default Dashboard
+export default MyGoals
