@@ -5,10 +5,18 @@ import { useKeycloak } from "@react-keycloak/web"
 import MyGoals from "./pages/dashboard/goals/MyGoals"
 import { Navigate } from "react-router"
 import ReviewRequests from "./pages/dashboard/requests/ReviewRequests"
+import CreateGoal from "./pages/dashboard/create_goal/CreateGoal"
+import { useEffect } from "react"
+import { setupAxios } from "./utils/Axios"
 
 function App() {
-  const { initialized } = useKeycloak()
+  const { keycloak, initialized } = useKeycloak()
 
+  useEffect(() => {
+    if (!initialized) return
+
+    setupAxios(keycloak)
+  }, [keycloak, initialized])
   return (
     initialized && (
       <BrowserRouter>
@@ -30,6 +38,16 @@ function App() {
             element={
               <PrivateRoute>
                 <ReviewRequests />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            exact
+            path="/create"
+            element={
+              <PrivateRoute>
+                <CreateGoal />
               </PrivateRoute>
             }
           />
