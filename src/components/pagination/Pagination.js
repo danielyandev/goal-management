@@ -2,9 +2,14 @@ import PerPage from "./PerPage"
 import ReactPaginate from "react-paginate"
 import PropTypes from "prop-types"
 
-function Pagination({ items, onPageChange, onPageSizeChange, pageSize }) {
+function Pagination({
+  totalElements,
+  onPageChange,
+  onPageSizeChange,
+  pageSize
+}) {
   const pageCount = () => {
-    return Math.ceil(items.length / pageSize)
+    return Math.ceil(parseInt(totalElements) / pageSize)
   }
 
   return (
@@ -47,7 +52,7 @@ Pagination.propTypes = {
   onPageChange: PropTypes.func,
   onPageSizeChange: PropTypes.func,
   pageSize: PerPage.propTypes.size,
-  items: PropTypes.array
+  totalElements: PropTypes.number
 }
 
 export default Pagination
