@@ -4,10 +4,10 @@ import Pagination from "../Pagination"
 describe("Pagination component", () => {
   const fn = jest.fn()
 
-  test("renders component without size when items are empty", () => {
+  test("renders component without size when elements are empty", () => {
     const { queryByTestId } = render(
       <Pagination
-        items={[]}
+        totalElements={0}
         pageSize={10}
         onPageChange={fn}
         onPageSizeChange={fn}
@@ -17,10 +17,10 @@ describe("Pagination component", () => {
     expect(queryByTestId("perpage-select")).not.toBeInTheDocument()
   })
 
-  test("renders component with size when items are not empty", () => {
+  test("renders component with size when elements are not empty", () => {
     const { queryByTestId } = render(
       <Pagination
-        items={["non empty goals array"]}
+        totalElements={1}
         pageSize={10}
         onPageChange={fn}
         onPageSizeChange={fn}

@@ -17,7 +17,7 @@ function PerPage({ size = 10, onSizeChange }) {
     <select
       data-testid="perpage-select"
       className="form-select form-select-sm"
-      onChange={(e) => onSizeChange(e.target.value)}
+      onChange={(e) => onSizeChange(parseInt(e.target.value))}
       defaultValue={size}
     >
       {renderOptions()}
