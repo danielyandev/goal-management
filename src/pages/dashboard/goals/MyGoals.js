@@ -26,7 +26,8 @@ function MyGoals() {
     setLoading(true)
     const params = {
       ...pagination,
-      reviewEligible: false
+      reviewEligible: false,
+      sort: "createdDate,desc"
     }
     const { data } = await getGoals(params)
     const { content, totalElements } = data

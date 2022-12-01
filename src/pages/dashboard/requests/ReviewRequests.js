@@ -33,7 +33,8 @@ function ReviewRequests() {
     setLoading(true)
     const params = {
       ...pagination,
-      reviewEligible: true
+      reviewEligible: true,
+      sort: "createdDate,desc"
     }
     const { data } = await getGoals(params)
     const { content, totalElements } = data

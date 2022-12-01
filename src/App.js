@@ -6,17 +6,10 @@ import MyGoals from "./pages/dashboard/goals/MyGoals"
 import { Navigate } from "react-router"
 import ReviewRequests from "./pages/dashboard/requests/ReviewRequests"
 import CreateGoal from "./pages/dashboard/create_goal/CreateGoal"
-import { useEffect } from "react"
-import { setupAxios } from "./utils/Axios"
 
 function App() {
-  const { keycloak, initialized } = useKeycloak()
+  const { initialized } = useKeycloak()
 
-  useEffect(() => {
-    if (!initialized) return
-
-    setupAxios(keycloak)
-  }, [keycloak, initialized])
   return (
     initialized && (
       <BrowserRouter>
