@@ -3,6 +3,7 @@ import Layout from "../../../layouts/main/Layout"
 import TableRow from "./components/TableRow"
 import EmptyRow from "../../../components/table/EmptyRow"
 import Pagination from "../../../components/pagination/Pagination"
+import { Link } from "react-router-dom"
 
 function MyGoals() {
   const [goals, setGoals] = useState([])
@@ -44,7 +45,9 @@ function MyGoals() {
   return (
     <Layout>
       <h2>My Goals</h2>
-      <button className="btn btn-outline-primary">Create new goal</button>
+      <Link to="/create">
+        <button className="btn btn-outline-primary">Create new goal</button>
+      </Link>
 
       <div className="table-responsive">
         <table className="table align-middle table-row-dashed mt-4">
