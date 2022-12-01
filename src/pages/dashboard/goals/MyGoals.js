@@ -6,9 +6,11 @@ import Pagination from "../../../components/pagination/Pagination"
 import { Link } from "react-router-dom"
 import { getGoals } from "../../../api/requests"
 import Loading from "../../../components/Loading"
+import ViewGoalModal from "../../../components/modals/ViewGoalModal"
 
 function MyGoals() {
   const [goals, setGoals] = useState([])
+  const [viewGoal, setViewGoal] = useState(null)
   const [loading, setLoading] = useState(false)
   const [totalElements, setTotalElements] = useState(0)
   const [pagination, setPagination] = useState({
@@ -33,11 +35,25 @@ function MyGoals() {
     setLoading(false)
   }
 
+  const handleViewCLick = (goal) => {
+    setViewGoal(goal)
+  }
+
+  const handleModalClose = () => {
+    setViewGoal(null)
+  }
+
   const renderGoals = () => {
     if (!goals.length) {
       return <EmptyRow colSpan={6} />
     }
-    return goals.map((goal) => <TableRow goal={goal} key={"goal-" + goal.id} />)
+    return goals.map((goal) => (
+      <TableRow
+        goal={goal}
+        key={"goal-" + goal.id}
+        onViewCLick={() => handleViewCLick(goal)}
+      />
+    ))
   }
 
   const handlePageChange = ({ selected }) => {
@@ -86,6 +102,8 @@ function MyGoals() {
         pageSize={pagination.size}
         onPageSizeChange={handlePageSizeChange}
       />
+
+      <ViewGoalModal goal={viewGoal} onClose={handleModalClose} />
     </Layout>
   )
 }

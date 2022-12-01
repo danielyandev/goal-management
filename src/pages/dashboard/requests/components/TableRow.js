@@ -1,22 +1,9 @@
 import PropTypes from "prop-types"
 import Button from "../../../../components/Button"
-import ApprovedBadge from "../../../../components/badge/ApprovedBadge"
-import RejectedBadge from "../../../../components/badge/RejectedBadge"
-import PendingBadge from "../../../../components/badge/PendingBadge"
 import { formatDate } from "../../../../utils/Date"
+import { getGoalBadge } from "../../../../helpers/Common"
 
-function TableRow({ goal }) {
-  const getGoalBadge = (status) => {
-    switch (status.toLowerCase()) {
-      case "approved":
-        return <ApprovedBadge />
-      case "rejected":
-        return <RejectedBadge />
-      default:
-        return <PendingBadge />
-    }
-  }
-
+function TableRow({ goal, onViewCLick }) {
   const isPending = (goal) => {
     return goal.status.toLowerCase() === "pending"
   }
@@ -41,13 +28,16 @@ function TableRow({ goal }) {
             <Button variant="outline-danger">Reject</Button>
           </>
         )}
-        <Button variant="outline-info">View</Button>
+        <Button variant="outline-info" onClick={onViewCLick}>
+          View
+        </Button>
       </td>
     </tr>
   )
 }
 
 TableRow.propTypes = {
-  goal: PropTypes.object
+  goal: PropTypes.object,
+  onViewCLick: PropTypes.func
 }
 export default TableRow
