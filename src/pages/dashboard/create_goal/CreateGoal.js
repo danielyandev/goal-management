@@ -39,12 +39,14 @@ function CreateGoal() {
       return
     }
     setErrors([])
-    const { status } = await createGoal(form)
-    if (status === httpStatuses.OK) {
-      return navigate("/dashboard")
+    try {
+      const { status } = await createGoal(form)
+      if (status === httpStatuses.OK) {
+        return navigate("/dashboard")
+      }
+    } catch (e) {
+      setErrors(["Something went wrong, please try again later"])
     }
-
-    setErrors(["Something went wrong, please try again later"])
   }
 
   const validate = () => {

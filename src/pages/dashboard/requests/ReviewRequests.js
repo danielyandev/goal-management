@@ -5,9 +5,11 @@ import EmptyRow from "../../../components/table/EmptyRow"
 import Pagination from "../../../components/pagination/Pagination"
 import { getGoals } from "../../../api/requests"
 import Loading from "../../../components/Loading"
+import ViewGoalModal from "../../../components/modals/ViewGoalModal"
 
 function ReviewRequests() {
   const [goals, setGoals] = useState([])
+  const [viewGoal, setViewGoal] = useState(null)
   const [loading, setLoading] = useState(false)
   const [totalElements, setTotalElements] = useState(0)
   const [pagination, setPagination] = useState({
@@ -18,6 +20,14 @@ function ReviewRequests() {
   useEffect(() => {
     fetchGoals()
   }, [pagination])
+
+  const handleViewCLick = (goal) => {
+    setViewGoal(goal)
+  }
+
+  const handleModalClose = () => {
+    setViewGoal(null)
+  }
 
   const fetchGoals = async () => {
     setLoading(true)
@@ -37,7 +47,11 @@ function ReviewRequests() {
       return <EmptyRow colSpan={6} />
     }
     return goals.map((goal) => (
-      <TableRow goal={goal} key={"review-goal-" + goal.id} />
+      <TableRow
+        goal={goal}
+        key={"review-goal-" + goal.id}
+        onViewCLick={() => handleViewCLick(goal)}
+      />
     ))
   }
 
@@ -84,6 +98,8 @@ function ReviewRequests() {
         pageSize={pagination.size}
         onPageSizeChange={handlePageSizeChange}
       />
+
+      <ViewGoalModal goal={viewGoal} onClose={handleModalClose} />
     </Layout>
   )
 }
