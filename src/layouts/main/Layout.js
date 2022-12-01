@@ -3,14 +3,21 @@ import Sidebar from "./partials/Sidebar"
 import Header from "./partials/Header"
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
+import { setupAxios } from "../../utils/Axios"
+import { useKeycloak } from "@react-keycloak/web"
 
 function Layout({ children }) {
   const [visible, setVisible] = useState(false)
   const location = useLocation()
+  const { keycloak, initialized } = useKeycloak()
 
   useEffect(() => {
     setVisible(false)
   }, [location])
+
+  useEffect(() => {
+    setupAxios(keycloak)
+  }, [keycloak, initialized])
 
   const toggleSidebar = () => {
     setVisible((visible) => !visible)
