@@ -25,12 +25,14 @@ function TableRow({ goal, onViewCLick, onReviewSubmit }) {
         {isPending(goal) && (
           <>
             <Button
+              data-testid="approve"
               variant="outline-success"
               onClick={() => onReviewSubmit(true)}
             >
               Approve
             </Button>
             <Button
+              data-testid="reject"
               variant="outline-danger"
               onClick={() => onReviewSubmit(false)}
             >
