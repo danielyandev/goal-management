@@ -4,7 +4,7 @@ import TableRow from "./components/TableRow"
 import EmptyRow from "../../../components/table/EmptyRow"
 import Pagination from "../../../components/pagination/Pagination"
 import { Link } from "react-router-dom"
-import { getGoals } from "../../../api/requests"
+import { getGoals } from "../../../api/goals"
 import Loading from "../../../components/Loading"
 import ViewGoalModal from "../../../components/modals/ViewGoalModal"
 

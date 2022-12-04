@@ -1,9 +1,10 @@
 import Layout from "../../../layouts/main/Layout"
 import { useEffect, useState } from "react"
 import ErrorAlert from "../../../components/alerts/ErrorAlert"
-import { createGoal, getUsers } from "../../../api/requests"
+import { createGoal } from "../../../api/goals"
 import { httpStatuses } from "../../../config/constants"
 import { useNavigate } from "react-router-dom"
+import { getUsers } from "../../../api/users"
 
 function CreateGoal() {
   const navigate = useNavigate()

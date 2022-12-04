@@ -15,6 +15,7 @@ Button.propTypes = {
     "outline-info",
     "outline-warning",
     "outline-danger",
+    "outline-secondary",
     "primary",
     "success",
     "info",
