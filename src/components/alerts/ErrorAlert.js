@@ -6,7 +6,7 @@ function ErrorAlert({ errors }) {
   }
   return (
     errors.length > 0 && (
-      <div className="alert alert-danger">
+      <div className="alert alert-danger" data-testid="errors">
         <ul className="list-unstyled">{renderErrors()}</ul>
       </div>
     )

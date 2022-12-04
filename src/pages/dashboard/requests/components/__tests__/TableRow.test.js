@@ -1,6 +1,6 @@
 import TableRow from "../TableRow"
 import TestsWrapper from "../../../../../helpers/TestsWrapper"
-import { render } from "@testing-library/react"
+import { fireEvent, render } from "@testing-library/react"
 import { formatDate } from "../../../../../utils/Date"
 
 const goal = {
@@ -45,8 +45,44 @@ describe("TableRow component", () => {
     expect(queryByText("Reject")).toBeInTheDocument()
   })
 
+  test("calls onReviewSubmit callback on approve", () => {
+    const onReviewSubmit = jest.fn()
+    const { getByTestId } = render(
+      <table>
+        <tbody>
+          <TableRow goal={goal} onReviewSubmit={onReviewSubmit} />
+        </tbody>
+      </table>,
+      {
+        wrapper: TestsWrapper
+      }
+    )
+
+    fireEvent.click(getByTestId("approve"))
+    expect(onReviewSubmit).toBeCalledTimes(1)
+    expect(onReviewSubmit).toBeCalledWith(true)
+  })
+
+  test("calls onReviewSubmit callback on reject", () => {
+    const onReviewSubmit = jest.fn()
+    const { getByTestId } = render(
+      <table>
+        <tbody>
+          <TableRow goal={goal} onReviewSubmit={onReviewSubmit} />
+        </tbody>
+      </table>,
+      {
+        wrapper: TestsWrapper
+      }
+    )
+
+    fireEvent.click(getByTestId("reject"))
+    expect(onReviewSubmit).toBeCalledTimes(1)
+    expect(onReviewSubmit).toBeCalledWith(false)
+  })
+
   test("renders table row with status Approved", () => {
-    goal.status = "approved"
+    goal.status = "APPROVED"
     const { getByTestId, queryByText } = render(
       <table>
         <tbody>
@@ -65,7 +101,7 @@ describe("TableRow component", () => {
   })
 
   test("renders table row with status Rejected", () => {
-    goal.status = "rejected"
+    goal.status = "REJECTED"
     const { getByTestId, queryByText } = render(
       <table>
         <tbody>
