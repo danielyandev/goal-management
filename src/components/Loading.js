@@ -4,7 +4,7 @@ function Loading({ children, loading }) {
   return !loading ? (
     children
   ) : (
-    <div className="row d-flex justify-content-center">
+    <div className="row d-flex justify-content-center" data-testid="loading">
       <div className="spinner-grow text-primary" role="status">
         <span className="sr-only">Loading...</span>
       </div>
