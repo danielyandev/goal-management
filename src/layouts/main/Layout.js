@@ -39,8 +39,7 @@ function Layout({ children }) {
 }
 
 Layout.propTypes = {
-  children: PropTypes.any,
-  history: PropTypes.any
+  children: PropTypes.any
 }
 
 export default Layout

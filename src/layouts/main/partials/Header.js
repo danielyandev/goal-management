@@ -5,7 +5,10 @@ import PropTypes from "prop-types"
 
 function Header({ toggleSidebar }) {
   return (
-    <header className="d-flex text-bg-dark align-items-center justify-content-between">
+    <header
+      className="d-flex text-bg-dark align-items-center justify-content-between"
+      data-testid="header"
+    >
       <div className="d-flex align-items-center ms-3">
         <button
           className="d-flex d-lg-none navbar-toggler position-absolute"
