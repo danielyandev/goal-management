@@ -6,7 +6,7 @@ import { formatDate } from "../../utils/Date"
 
 function ViewGoalModal({ goal, onClose }) {
   return (
-    <Modal show={!!goal} onHide={onClose}>
+    <Modal show={!!goal} onHide={onClose} data-testid="view-goal-modal">
       <Modal.Header closeButton>
         <Modal.Title>View goal</Modal.Title>
       </Modal.Header>
@@ -35,13 +35,19 @@ function ViewGoalModal({ goal, onClose }) {
             </div>
             <div className="row mt-3">
               <div className="col-lg-6 fw-bold">Status</div>
-              <div className="col-lg-6">{getGoalBadge(goal.status)}</div>
+              <div className="col-lg-6" data-testid="status">
+                {getGoalBadge(goal.status)}
+              </div>
             </div>
           </>
         )}
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="outline-primary" onClick={onClose}>
+        <Button
+          variant="outline-primary"
+          onClick={onClose}
+          data-testid="close-button"
+        >
           Close
         </Button>
       </Modal.Footer>

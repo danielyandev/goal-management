@@ -134,7 +134,7 @@ function ReviewRequests() {
       <ConfirmActionModal
         message={reviewedGoal.message}
         onClose={() => setReviewedGoal(initialReviewedGoal)}
-        onApprove={handleConfirmReviewSubmit}
+        onConfirm={handleConfirmReviewSubmit}
       />
     </Layout>
   )
