@@ -82,6 +82,7 @@ function CreateGoal() {
         <div className="form-group">
           <label htmlFor="title">Title</label>
           <input
+            data-testid="title-field"
             type="text"
             className="form-control"
             id="title"
@@ -93,6 +94,7 @@ function CreateGoal() {
         <div className="form-group mt-3">
           <label htmlFor="description">Description</label>
           <textarea
+            data-testid="description-field"
             className="form-control"
             rows="5"
             id="description"
@@ -104,6 +106,7 @@ function CreateGoal() {
         <div className="form-group mt-3">
           <label htmlFor="reviewer">Reviewer</label>
           <select
+            data-testid="reviewer-field"
             className="form-control"
             id="reviewer"
             name="reviewer"
@@ -114,7 +117,11 @@ function CreateGoal() {
             {renderOptions()}
           </select>
         </div>
-        <button type="submit" className="btn btn-outline-primary mt-3">
+        <button
+          type="submit"
+          className="btn btn-outline-primary mt-3"
+          data-testid="create-button"
+        >
           Create
         </button>
       </form>

@@ -2,7 +2,6 @@ import { render } from "@testing-library/react"
 import Layout from "../Layout"
 import TestsWrapper from "../../../helpers/TestsWrapper"
 
-jest.mock("../../../utils/Axios")
 describe("Layout component", () => {
   test("renders children", () => {
     const { queryByText, getByTestId } = render(
