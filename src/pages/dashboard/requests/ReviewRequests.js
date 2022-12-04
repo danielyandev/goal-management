@@ -3,13 +3,20 @@ import Layout from "../../../layouts/main/Layout"
 import TableRow from "./components/TableRow"
 import EmptyRow from "../../../components/table/EmptyRow"
 import Pagination from "../../../components/pagination/Pagination"
-import { getGoals } from "../../../api/requests"
+import { getGoals, reviewGoal } from "../../../api/goals"
 import Loading from "../../../components/Loading"
 import ViewGoalModal from "../../../components/modals/ViewGoalModal"
+import ConfirmActionModal from "../../../components/modals/ConfirmActionModal"
 
 function ReviewRequests() {
+  const initialReviewedGoal = {
+    goal: null,
+    message: ""
+  }
+
   const [goals, setGoals] = useState([])
   const [viewGoal, setViewGoal] = useState(null)
+  const [reviewedGoal, setReviewedGoal] = useState(initialReviewedGoal)
   const [loading, setLoading] = useState(false)
   const [totalElements, setTotalElements] = useState(0)
   const [pagination, setPagination] = useState({
@@ -23,10 +30,6 @@ function ReviewRequests() {
 
   const handleViewCLick = (goal) => {
     setViewGoal(goal)
-  }
-
-  const handleModalClose = () => {
-    setViewGoal(null)
   }
 
   const fetchGoals = async () => {
@@ -43,6 +46,32 @@ function ReviewRequests() {
     setLoading(false)
   }
 
+  const handleReviewSubmit = (goal, approved) => {
+    setReviewedGoal({
+      goal,
+      approved,
+      message: `Are you sure you want to ${
+        approved ? "approve" : "reject"
+      } this goal?`
+    })
+  }
+
+  const handleConfirmReviewSubmit = async () => {
+    const params = {
+      id: reviewedGoal.goal.id,
+      approve: reviewedGoal.approved
+    }
+    const { data } = await reviewGoal(params)
+    setReviewedGoal(initialReviewedGoal)
+    const mapped = goals.map((goal) => {
+      if (goal.id === data.id) {
+        goal.status = data.status
+      }
+      return goal
+    })
+    setGoals(mapped)
+  }
+
   const renderGoals = () => {
     if (!goals.length) {
       return <EmptyRow colSpan={6} />
@@ -52,6 +81,7 @@ function ReviewRequests() {
         goal={goal}
         key={"review-goal-" + goal.id}
         onViewCLick={() => handleViewCLick(goal)}
+        onReviewSubmit={(approved) => handleReviewSubmit(goal, approved)}
       />
     ))
   }
@@ -100,7 +130,12 @@ function ReviewRequests() {
         onPageSizeChange={handlePageSizeChange}
       />
 
-      <ViewGoalModal goal={viewGoal} onClose={handleModalClose} />
+      <ViewGoalModal goal={viewGoal} onClose={() => setViewGoal(null)} />
+      <ConfirmActionModal
+        message={reviewedGoal.message}
+        onClose={() => setReviewedGoal(initialReviewedGoal)}
+        onApprove={handleConfirmReviewSubmit}
+      />
     </Layout>
   )
 }

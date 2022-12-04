@@ -3,7 +3,7 @@ import Button from "../../../../components/Button"
 import { formatDate } from "../../../../utils/Date"
 import { getGoalBadge } from "../../../../helpers/Common"
 
-function TableRow({ goal, onViewCLick }) {
+function TableRow({ goal, onViewCLick, onReviewSubmit }) {
   const isPending = (goal) => {
     return goal.status.toLowerCase() === "pending"
   }
@@ -24,8 +24,18 @@ function TableRow({ goal, onViewCLick }) {
       <td data-testid="td-actions" className="text-end">
         {isPending(goal) && (
           <>
-            <Button variant="outline-success">Approve</Button>
-            <Button variant="outline-danger">Reject</Button>
+            <Button
+              variant="outline-success"
+              onClick={() => onReviewSubmit(true)}
+            >
+              Approve
+            </Button>
+            <Button
+              variant="outline-danger"
+              onClick={() => onReviewSubmit(false)}
+            >
+              Reject
+            </Button>
           </>
         )}
         <Button variant="outline-info" onClick={onViewCLick}>
@@ -38,6 +48,7 @@ function TableRow({ goal, onViewCLick }) {
 
 TableRow.propTypes = {
   goal: PropTypes.object,
-  onViewCLick: PropTypes.func
+  onViewCLick: PropTypes.func,
+  onReviewSubmit: PropTypes.func
 }
 export default TableRow
