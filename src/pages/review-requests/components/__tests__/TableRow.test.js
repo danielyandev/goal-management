@@ -1,7 +1,7 @@
 import TableRow from "../TableRow"
-import TestsWrapper from "../../../../../helpers/TestsWrapper"
+import TestsWrapper from "../../../../helpers/TestsWrapper"
 import { fireEvent, render } from "@testing-library/react"
-import { formatDate } from "../../../../../utils/Date"
+import { formatDate } from "../../../../utils/Date"
 
 const goal = {
   id: 8,

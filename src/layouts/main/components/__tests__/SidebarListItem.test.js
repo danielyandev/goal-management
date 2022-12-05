@@ -5,7 +5,7 @@ import { render } from "@testing-library/react"
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useLocation: () => ({
-    pathname: "localhost:3005/active"
+    pathname: "/active"
   })
 }))
 

@@ -5,7 +5,7 @@ function SidebarListItem({ uri, text }) {
   const location = useLocation()
 
   const isActive = () => {
-    return location.pathname.includes(uri)
+    return location.pathname === uri
   }
 
   const getLinkClassname = () => {

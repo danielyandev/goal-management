@@ -1,10 +1,10 @@
-import Layout from "../../../layouts/main/Layout"
+import Layout from "../../layouts/main/Layout"
 import { useEffect, useState } from "react"
-import ErrorAlert from "../../../components/alerts/ErrorAlert"
-import { createGoal } from "../../../api/goals"
-import { httpStatuses } from "../../../config/constants"
+import ErrorAlert from "../../components/alerts/ErrorAlert"
+import { createGoal } from "../../api/goals"
+import { httpStatuses } from "../../config/constants"
 import { useNavigate } from "react-router-dom"
-import { getUsers } from "../../../api/users"
+import { getUsers } from "../../api/users"
 
 function CreateGoal() {
   const navigate = useNavigate()
@@ -43,7 +43,7 @@ function CreateGoal() {
     try {
       const { status } = await createGoal(form)
       if (status === httpStatuses.OK) {
-        return navigate("/dashboard")
+        return navigate("/goals")
       }
     } catch (e) {
       setErrors(["Something went wrong, please try again later"])

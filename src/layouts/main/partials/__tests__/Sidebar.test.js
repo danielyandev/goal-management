@@ -14,7 +14,7 @@ describe("Sidebar component", () => {
     const link = getByTestId("dashboard-link")
     expect(link).toBeInTheDocument()
     expect(link).toHaveTextContent("GM Tool")
-    expect(link.href).toContain("/dashboard")
+    expect(link.href).toContain("/goals")
   })
 
   test("Sidebar is not visible when visible is false", () => {

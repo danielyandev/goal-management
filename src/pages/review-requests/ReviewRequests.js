@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
-import Layout from "../../../layouts/main/Layout"
+import Layout from "../../layouts/main/Layout"
 import TableRow from "./components/TableRow"
-import EmptyRow from "../../../components/table/EmptyRow"
-import Pagination from "../../../components/pagination/Pagination"
-import { getGoals, reviewGoal } from "../../../api/goals"
-import Loading from "../../../components/Loading"
-import ViewGoalModal from "../../../components/modals/ViewGoalModal"
-import ConfirmActionModal from "../../../components/modals/ConfirmActionModal"
+import EmptyRow from "../../components/table/EmptyRow"
+import Pagination from "../../components/pagination/Pagination"
+import { getGoals, reviewGoal } from "../../api/goals"
+import Loading from "../../components/Loading"
+import ViewGoalModal from "../../components/modals/ViewGoalModal"
+import ConfirmActionModal from "../../components/modals/ConfirmActionModal"
 
 function ReviewRequests() {
   const initialReviewedGoal = {
