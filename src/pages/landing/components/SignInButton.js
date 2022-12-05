@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 function SignInButton({ children, ...rest }) {
   const { keycloak } = useKeycloak()
-  const redirectUri = "/dashboard"
+  const redirectUri = "/goals"
 
   const handleSignIn = () => {
     return keycloak.login({ redirectUri: location.origin + redirectUri })

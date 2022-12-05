@@ -1,7 +1,7 @@
 import { act, fireEvent, render } from "@testing-library/react"
 import CreateGoal from "../CreateGoal"
-import TestsWrapper from "../../../../helpers/TestsWrapper"
-import * as goals from "../../../../api/goals"
+import TestsWrapper from "../../../helpers/TestsWrapper"
+import * as goals from "../../../api/goals"
 
 jest.spyOn(goals, "createGoal").mockResolvedValueOnce({})
 jest.mock("axios", () => {

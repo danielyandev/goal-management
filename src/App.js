@@ -2,10 +2,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Landing from "./pages/landing/Landing"
 import PrivateRoute from "./helpers/PrivateRoute"
 import { useKeycloak } from "@react-keycloak/web"
-import MyGoals from "./pages/dashboard/goals/MyGoals"
+import MyGoals from "./pages/my-goals/MyGoals"
 import { Navigate } from "react-router"
-import ReviewRequests from "./pages/dashboard/requests/ReviewRequests"
-import CreateGoal from "./pages/dashboard/create_goal/CreateGoal"
+import ReviewRequests from "./pages/review-requests/ReviewRequests"
+import CreateGoal from "./pages/create-goal/CreateGoal"
 
 function App() {
   const { initialized } = useKeycloak()
@@ -17,7 +17,7 @@ function App() {
           <Route exact path="/" element={<Landing />} />
           <Route
             exact
-            path="/dashboard"
+            path="/goals"
             element={
               <PrivateRoute>
                 <MyGoals />
@@ -27,7 +27,7 @@ function App() {
 
           <Route
             exact
-            path="/requests"
+            path="/goals/requests"
             element={
               <PrivateRoute>
                 <ReviewRequests />
@@ -37,7 +37,7 @@ function App() {
 
           <Route
             exact
-            path="/create"
+            path="/goals/create"
             element={
               <PrivateRoute>
                 <CreateGoal />

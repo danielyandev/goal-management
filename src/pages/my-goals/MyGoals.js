@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
-import Layout from "../../../layouts/main/Layout"
+import Layout from "../../layouts/main/Layout"
 import TableRow from "./components/TableRow"
-import EmptyRow from "../../../components/table/EmptyRow"
-import Pagination from "../../../components/pagination/Pagination"
+import EmptyRow from "../../components/table/EmptyRow"
+import Pagination from "../../components/pagination/Pagination"
 import { Link } from "react-router-dom"
-import { getGoals } from "../../../api/goals"
-import Loading from "../../../components/Loading"
-import ViewGoalModal from "../../../components/modals/ViewGoalModal"
+import { getGoals } from "../../api/goals"
+import Loading from "../../components/Loading"
+import ViewGoalModal from "../../components/modals/ViewGoalModal"
 
 function MyGoals() {
   const [goals, setGoals] = useState([])
@@ -74,7 +74,7 @@ function MyGoals() {
   return (
     <Layout>
       <h2>My Goals</h2>
-      <Link to="/create">
+      <Link to="/goals/create">
         <button className="btn btn-outline-primary">Create new goal</button>
       </Link>
 
